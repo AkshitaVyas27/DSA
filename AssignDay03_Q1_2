@@ -1,0 +1,42 @@
+#include<stdio.h>
+#define SIZE 9
+
+
+int bin_rec_search(int arr[SIZE], int key, int low, int high){
+    int mid, res;
+    mid=(low+high)/2;
+    if(low>high)
+    return -1;
+
+    if(key == arr[mid])
+        return mid;
+
+    else if(key<mid)
+    res = bin_rec_search(arr,key,low, mid-1);
+
+    else
+    res=bin_rec_search(arr, key, mid+1, high);
+
+
+    return res;
+
+}
+
+int main(){
+    int key, num;
+    int arr[SIZE]={11, 22, 33, 44, 55, 66, 77, 88, 99};
+    printf("Enter a key:");
+    scanf("%d", &key);
+
+
+printf("\nBinary search using recursion:");
+    num=bin_rec_search(arr, key, 0, SIZE-1);
+    if(num==-1)
+        printf("\nKey was not found");
+    
+    else
+        printf("Key was found at %d", num);
+
+        return 0;
+
+}
